@@ -22,10 +22,10 @@ const About = () => {
     const key = getTodayKey();
     const count = Number(localStorage.getItem(key) || 0);
 
-    // if (count >= DAILY_LIMIT) {
-    //   setReply("MemeBot unionized 😴 Come back tomorrow.");
-    //   return;
-    // }
+    if (count >= DAILY_LIMIT) {
+      setReply("MemeBot unionized 😴 Come back tomorrow.");
+      return;
+    }
 
     // 🔥 Long message protection
     if (trimmed.length > 200) {
@@ -105,7 +105,7 @@ const About = () => {
       localStorage.setItem("last_meme_message", trimmed);
       localStorage.setItem("last_meme_request_time", now.toString());
 
-      const res = await fetch("http://localhost:3001/meme", {
+      const res = await fetch("/api/meme", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
