@@ -11,7 +11,7 @@ function App() {
   const [active, setActive] = useState("about");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const sections: Record<string, JSX.Element> = {
+  const sections: Record<string, React.ReactNode> = {
     about: <About />,
     education: <Education />,
     work: <Work />,
